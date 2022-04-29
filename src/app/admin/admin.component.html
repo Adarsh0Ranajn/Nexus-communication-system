@@ -1,0 +1,47 @@
+<div>
+<div *ngIf="k1">
+    <h2>Welcome to Admin-Login Page</h2>
+    <form [formGroup]= "loginRef" (ngSubmit)="checkUser()">
+        <table>
+    
+    <tr>
+        <td><label><p class="font-weight-bold">Username</p></label></td>
+        <td><input type="text" formControlName="user"></td>
+    </tr>
+    <tr>
+       <td><label><p class="font-weight-bold">Password</p></label></td>
+       <td><input type="password" formControlName="pass"></td> 
+    </tr>
+    <tr>
+        <td><input type="submit" value="Submit" class="btn btn-success" style="width:200px;"></td>
+        <td><input type="reset" value="Reset" class="btn btn-danger" style="width:200px;"></td>
+    </tr>
+</table>
+</form>
+<p>{{msg}}</p>
+</div>
+<div *ngIf="k2">
+    <table id="tab1">
+        <tr><td><button class="btn btn-light" (click)="admin_employee()">Employee Details</button></td>
+        <td><button class="btn btn-light"(click)="admin_vendor()">Vendor Details</button></td>
+        <td><button class="btn btn-light"(click)="admin_stock()">Stock Details</button></td>
+        <td><button class="btn btn-light"(click)="admin_retail_showroom()">Retail Showroom Details</button></td>
+        <td><button class="btn btn-success"(click)="logout()">Log out</button></td></tr>
+       
+       </table>
+</div>
+<div *ngIf="s2">
+    <hr>
+    <table>
+        <tr><td><button class="btn btn-primary btn-sm" (click)="stock_add()" style="width: 200px;height: 45px;">Add Stock</button></td>
+        <td><button class="btn btn-primary btn-sm" (click)="view_stock_vendor()" style="width: 200px;height: 45px;">View Product by Vendor</button></td>
+        <td><button class="btn btn-primary btn-sm" (click)="view_stock_item()" style="width: 200px;height: 45px;">View Product By Item</button></td></tr>
+       </table>
+</div>
+<p *ngIf="e1"><app-admin-employee></app-admin-employee></p>
+<p *ngIf="e2"><app-admin-vendor></app-admin-vendor></p>
+<p *ngIf="e3"><app-admin-stock></app-admin-stock></p>
+<p *ngIf="e5"><app-viewstockvendor></app-viewstockvendor></p>
+<p *ngIf="e6"><app-viewstockitem></app-viewstockitem></p>
+<p *ngIf="e4"><app-admin-retail-showroom></app-admin-retail-showroom></p>
+</div>

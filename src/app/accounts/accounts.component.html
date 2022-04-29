@@ -1,0 +1,158 @@
+<div *ngIf="a1">
+    <h2>Welcome to Accounts-Login Page</h2>
+    <form [formGroup]="loginRef" (ngSubmit)="checkUser()">
+        <table>
+    
+    <tr>
+        <td><label><p class="font-weight-bold">Username</p></label></td>
+        <td><input type="text" formControlName="user"></td>
+    </tr>
+    <tr>
+       <td><label><p class="font-weight-bold">Password</p></label></td>
+       <td><input type="password" formControlName="pass"></td> 
+    </tr>
+    <tr>
+        <td><input type="submit" value="submit" class="btn btn-success" style="width:200px;"></td>
+        <td><input type="reset" value="reset" class="btn btn-danger" style="width:200px;"></td>
+    </tr>
+</table>
+</form>
+<p>{{msg}}</p>
+</div>
+
+<div *ngIf="a2">
+    <table id="tb1">
+        <tr><td><button class="btn btn-light" (click)="calculate_bill()">Calculate Bill</button></td>
+            <td><button class="btn btn-success"(click)="logout()">Log out</button></td></tr>
+        <!-- <tr><td><button class="btn btn-light"(click)="maintain_bill()">Maintain Bill Details</button></td></tr><br/>
+        <tr><td><button class="btn btn-light"(click)="update_bill()">Update Bill</button></td></tr><br/>
+        <tr><td><button class="btn btn-light"(click)="calculate_plancharges()">Calculate Plan Charges</button></td></tr><br/> -->
+       </table>
+    </div>
+
+    <div *ngIf="a3"><h2>Calculate Bill</h2>
+        <form [formGroup]= "ViewwconnectionRef" (ngSubmit)="Viewsconnectionref()">
+            <table>
+            <tr>
+                <td><label><p class="font-weight-bold">Enter Customer User Name</p></label></td>
+                <td><input type="text" formControlName="v_name"></td>
+                <td><input type="submit" value="Search" class="btn btn-success"></td>
+            </tr>
+            </table>
+        </form>
+        <table border="1" class="table table-striped">
+            <tr>
+                <th>Price</th>
+                <th>No. of Connections</th>
+                <th>Price</th>
+            </tr>
+            <tr *ngFor="let ven of rep1">
+                    <td>{{ven._id}}</td>
+                    <td>{{ven.no_of_connection}}</td>
+                    <td>{{ven.amount}}</td>
+            </tr>
+            <tr>
+                <td>Total</td>
+                <td></td>
+                <td>{{sumamount}}</td>
+            </tr>
+        </table>
+    </div>
+    <div *ngIf="a5">
+        <h2>Update Bill Details</h2>
+        <table border="1" class="table table-striped">
+            <tr>
+                <th>Order id</th>
+                <th>Order Date</th>
+                <th>Connection Type</th>
+                <th>Plan</th>
+                <th>No. of Active connections</th>
+                <th>Amount</th>
+
+            </tr>
+            <!-- <tr *ngFor="let element of out_order">
+                    <td>{{element._id}}</td>
+                    <td>{{element.date}}</td>
+                    <td>{{element.Connectionrequired}}</td>
+                    <td>{{element.chooseplan}}</td>
+                    <td>{{element.status}}</td>
+                    <td><select #ref1 >
+                    <option value="Active">Active</option>
+                    <option value="Permanently Inactive">Permanently Inactive</option>
+                    <option value="Temporary Inactive">Temporary Inactive</option>
+                    </select></td>
+                    <td><input type="button" value="Update" (click)="transfer_tech(element)"></td>
+            </tr> -->
+            </table>
+    </div>
+    <div *ngIf="a4">
+        <h4>Bill Details</h4>
+            <table>
+                <tr>
+                    <td><label><p class="font-weight-bold">S.No.</p></label></td>
+                    <td><input type="number" id="_id"></td>
+                    <td><label><p class="font-weight-bold">Customer Name</p></label></td>
+                    <td><input type="text" id="vendor_name"></td>
+                    <td><label><p class="font-weight-bold">Invoice No.</p></label></td>
+                    <td><input type="number" id="invoice_no" ></td>
+                    <td><label><p class="font-weight-bold">Date</p></label></td>
+                    <td><input type="date" id="date"></td>
+                </tr>
+            </table>
+            <table>
+                <tr>
+                    <td><label><p class="font-weight-bold">Connection Type</p></label></td>
+                    <td><label><p class="font-weight-bold">Connection Plan </p></label></td>
+                    <td><label><p class="font-weight-bold">No. of connections</p></label></td>
+                    <td><label><p class="font-weight-bold">Amount</p></label></td>
+                </tr>
+                <tr>
+                    <td><input type="string" id="item_name"></td>
+                    <td><input type="number" id="quantity"></td>
+                    <td><input type="number" id="item_unit_price"></td>
+                    <td><input type="number" id="amount"></td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td><input type="submit" value="Add stock" class="btn btn-success"></td>
+                    <td><input type="reset" value="Reset" class="btn btn-danger"></td>
+                </tr>
+            </table>
+    </div>
+    <div *ngIf="a6"><h2>Plan Charges</h2>
+        <!-- <form [formGroup]="place_orders_input" (ngSubmit)="placeordersinput()"> -->
+        <table>
+        <tr>
+            <td>Username</td>
+            <td><input type="text" value={{current_user}} readonly ></td></tr>
+        <tr> <td>Order ID</td>
+            <td><input type="number" name="_id" id="_id"></td></tr>
+            <tr>
+            <td>Date</td>
+            <td><input type="date" name="date" id="date"></td></tr>
+            <tr>
+            <td>Connection Type</td>
+            <td><select  name="connectionrequired" id="Connectionrequired">
+                 <option value="Landline">Landline</option>
+                 <option value="Broadband">Broadband</option>
+                 <option value="Both">Both</option>
+                  </select>
+                </td>
+            </tr>
+            <tr>
+                <td>Connection Plan</td>
+                <td><select  name="chooseplan" id="chooseplan">
+                     <option value=299>299/-</option>
+                     <option value=399>399/-</option>
+                     <option value=699>699/-</option>
+                      </select>
+                    </td>
+                </tr>
+            <tr>
+                <td></td>
+        <td><input type="submit" id="apply" class="btn btn-success" value="Apply"></td>
+        </tr>
+    </table>
+    </div>
+    

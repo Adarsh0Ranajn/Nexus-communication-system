@@ -1,0 +1,14 @@
+
+<div>
+    <h2>Welcome to View Current Stock By Item Page</h2>
+    <table border="1" class="table table-striped">
+<tr>
+    <th>Item name</th>
+    <th>Current Stock</th>
+</tr>
+<tr *ngFor="let ven of sen_arr">
+        <td>{{ven._id}}</td>
+        <td>{{ven.Current_Stock}}</td>
+</tr>
+</table>
+</div>

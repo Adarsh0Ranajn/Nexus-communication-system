@@ -1,0 +1,24 @@
+<div>
+        <h2>Welcome to View Stock By Vendor Page</h2>
+        <form [formGroup]= "ViewstockvendorRef" (ngSubmit)="Viewstockvendorref()">
+            <table>
+            <tr>
+                <td><label><p class="font-weight-bold">Enter Vendor name</p></label></td>
+                <td><input type="text" formControlName="v_name"></td>
+                <td><input type="submit" value="Search" class="btn btn-success"></td>
+            </tr>
+            </table>
+        </form>
+
+
+        <table border="1" class="table table-striped">
+    <tr>
+        <th>Item name</th>
+        <th>Current Stock</th>
+    </tr>
+    <tr *ngFor="let ven of sen_arr">
+            <td>{{ven._id}}</td>
+            <td>{{ven.Current_Stock }}</td>
+    </tr>
+</table>
+</div>

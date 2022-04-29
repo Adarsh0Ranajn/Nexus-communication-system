@@ -1,0 +1,66 @@
+<div>
+    <h2>Welcome to Retail Showroom Page</h2>
+    <form [formGroup]="adminretailref" (ngSubmit)="adminretaildata()">
+        <table>
+    
+    <tr>
+        <td><label><p class="font-weight-bold">Retail Showroom ID</p></label></td>
+        <td><input type="text" formControlName="_id"></td>
+    </tr>
+    <tr>
+       <td><label><p class="font-weight-bold">Retail Showroom Name</p></label></td>
+       <td><input type="text" formControlName="adminretail_name"></td> 
+    </tr>
+    <tr>
+        <td><label><p class="font-weight-bold">Retail Showroom City</p></label></td>
+        <td><input type="text" formControlName="adminretail_city"></td> 
+     </tr>
+     <tr>
+        <td><label><p class="font-weight-bold">Retail Showroom Phone No.</p></label></td>
+        <td><input type="text" formControlName="adminretail_phone"></td> 
+     </tr>
+    <tr>
+        <td><input type="submit" value="submit" class="btn btn-success" style="width:200px;"></td>
+        <td><input type="reset" value="reset" class="btn btn-danger" style="width:200px;"></td>
+    </tr>
+</table>
+</form>
+<p>{{msg}}</p>
+<table border="1" class="table table-striped">
+    <tr>
+        <th>Ven ID</th>
+        <th>Name</th>
+        <th>City</th>
+        <th>Phone no.</th>
+        <th>Delete</th>
+        <th>Update</th>
+    </tr>
+    <tr *ngFor="let ven of ven_arr">
+            <td>{{ven._id}}</td>
+            <td>{{ven.adminretail_name | uppercase}}</td>
+            <td>{{ven.adminretail_city}}</td>
+            <td>{{ven.adminretail_phone }}</td>
+            <td><input type="button" value="Delete" (click)="deleteven(ven._id)" class="btn btn-primary"/></td>
+            <td><input type="button" value="Update" (click)="updateven(ven)" class="btn btn-secondary"/></td>
+    </tr>
+</table>
+{{updateMsg}}
+{{deleteMsg}}
+<div *ngIf="flag">
+    <h2>Update Vendor</h2>
+    <form (ngSubmit)="updateVenFromDb()" class="form-group">
+        <label>Vendor Id</label>
+        <input type="number" name="_id" [(ngModel)]="Venid" readonly class="form-control"/><br/>
+        <label>Name</label>
+        <input type="text" name="Name" [(ngModel)]="Venname" readonly class="form-control"/><br/>
+        <label>City</label>
+        <input type="text" name="Age" [(ngModel)]="Vencity" class="form-control"/><br/>
+        <label>Phone no.</label>
+        <input type="number" name="Salary" [(ngModel)]="Venphone" class="form-control"/><br/>
+        <input type="submit" value="update product" class="btn btn-primary" />
+        <input type="reset" value="reset" class="btn btn-secondary"/>
+    </form>
+</div>
+
+
+</div>

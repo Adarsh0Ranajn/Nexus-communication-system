@@ -1,0 +1,20 @@
+<div>
+<div *ngIf="f0">
+<h2>Welcome to the Nexus Communcication System</h2>
+
+<table id="tab4">
+ <tr><td><button class="btn btn-secondary" (click)="admin_login()" style="width:250px">ADMIN</button></td></tr><br/>
+ <tr><td><button class="btn btn-secondary" (click)="accounts_login()" style="width:250px">ACCOUNTS</button></td></tr><br/>
+ <tr><td><button class="btn btn-secondary" (click)="technical_login()" style="width:250px">TECHNICAL</button></td></tr><br/>
+ <tr><td><button class="btn btn-secondary" (click)="retailshops_login()" style="width:250px">RETAIL SHOPS</button></td></tr><br/>
+ <tr><td><button class="btn btn-secondary" (click)="customer_login()" style="width:250px">CUSTOMER</button></td></tr>  
+</table>
+</div>
+<p *ngIf="f1"><app-admin></app-admin></p>
+<p *ngIf="f2"><app-accounts></app-accounts></p>
+<p *ngIf="f3"><app-technical></app-technical></p>
+<p *ngIf="f4"><app-retailshops></app-retailshops></p>
+<p *ngIf="f5"><app-customer></app-customer></p>
+</div>
+
+

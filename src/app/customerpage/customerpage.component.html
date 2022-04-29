@@ -1,0 +1,147 @@
+<div>
+<div *ngIf="k1">
+<table id="t1">
+    <tr><td><button class="btn btn-light"(click)="place_order()">Place Order</button></td>
+    <td><button class="btn btn-light"(click)="last_order_status()">Last Order Status</button></td>
+    <td><button class="btn btn-light"(click)="update_profile()">Update Profile</button></td>
+    <td><button class="btn btn-light"(click)="my_orders()">My orders</button></td>
+    <td><button class="btn btn-light"(click)="bill_details()">Bill Details</button></td>
+    <td><button class="btn btn-success"(click)="logout()">Log out</button></td></tr>
+   </table>
+</div>
+
+
+<div *ngIf="k2"><h2>Place order</h2>
+    <form [formGroup]="place_orders_input" (ngSubmit)="placeordersinput()">
+    <table>
+    <tr>
+        <td>Username</td>
+        <td><input type="text" value={{current_user}} readonly ></td></tr>
+    <tr> <td>Order ID</td>
+        <td><input type="number" name="_id" formControlName="_id"></td></tr>
+        <tr>
+        <td>Date</td>
+        <td><input type="date" name="date" formControlName="date" style="width:185px;"></td></tr>
+        <tr>
+        <td>Connection Required</td>
+        <td><select  name="connectionrequired" formControlName="Connectionrequired" style="width:185px;">
+             <option value="Landline">Landline</option>
+             <option value="Broadband">Broadband</option>
+             <option value="Both">Both</option>
+              </select>
+            </td>
+        </tr>
+        <tr>
+            <td>Choose Plan</td>
+            <td><select  name="chooseplan" formControlName="chooseplan" style="width:185px;">
+                 <option value=299>299/-</option>
+                 <option value=399>399/-</option>
+                 <option value=699>699/-</option>
+                  </select>
+                </td>
+            </tr>
+        <tr>
+            <td></td>
+    <td><input type="submit" id="apply" class="btn btn-success" value="Apply" style="width:225px;"></td>
+    </tr>
+</table>
+</form>
+{{msg}}
+
+
+</div>
+
+
+
+
+
+
+
+
+<div *ngIf="k3"><h2>Last Order Status</h2>
+    <table border="1" class="table table-striped">
+        <tr>
+            <th>Order id</th>
+            <th>Order Date</th>
+            <th>Connection Type</th>
+            <th>Plan</th>
+            <th>Status</th>
+        </tr>
+        
+        <tr>
+            <td>{{out_order[out_order.length-1]._id}}</td>
+            <td>{{out_order[out_order.length-1].date}}</td>
+            <td>{{out_order[out_order.length-1].Connectionrequired}}</td>
+            <td>{{out_order[out_order.length-1].chooseplan}}</td>
+            <td>{{out_order[out_order.length-1].status}}</td>
+    </tr>
+</table>
+</div>
+<div *ngIf="k4">
+    <h2>Update Profile</h2>
+    <form (ngSubmit)="updatecustomerFromDb()" class="form-group">
+        <label>Id</label>
+        <input type="number" name="_id" [(ngModel)]="_id" readonly class="form-control" style="display:inline-block;margin-left: 45px;margin-right: 45px;margin-top: 55px;"/>
+        <label>Name</label>
+        <input type="text" name="Name" [(ngModel)]="name" readonly class="form-control" style="display:inline-block;margin-left: 45px;margin-right: 45px;margin-top: 55px;"/>
+        <label>Username</label>
+        <input type="text" name="Username" [(ngModel)]="username" readonly class="form-control" style="display:inline-block;margin-left: 45px;margin-right: 45px;margin-top: 55px;"/><br/>
+        <label>Password</label>
+        <input type="pass" name="password" [(ngModel)]="password" class="form-control" style="display:inline-block;margin-left: 45px;margin-right: 45px;margin-top: 55px;"/>
+        <label>Age</label>
+        <input type="number" name="age" [(ngModel)]="age" class="form-control" style="display:inline-block;margin-left: 45px;margin-right: 45px;margin-top: 55px;"/>
+        <label>Phone no.</label>
+        <input type="number" name="phoneno" [(ngModel)]="phone_no" class="form-control" style="display:inline-block;margin-left: 45px;margin-right: 45px;margin-top: 55px;"/><br/>
+        <label>City</label>
+        <input type="text" name="city" [(ngModel)]="city" class="form-control" style="display:inline-block;margin-left: 45px;margin-right: 45px;margin-top: 55px;"/>
+        <label>Pincode</label>
+        <input type="number" name="number" [(ngModel)]="pincode" class="form-control" style="display:inline-block;margin-left: 45px;margin-right: 45px;margin-top: 55px;"/><br/>
+        <input type="submit" value="Update" class="btn btn-primary" style="margin-top: 60px;width:220px;"/>
+        
+    </form>
+{{msg}}
+
+
+
+
+
+
+</div>
+<div *ngIf="k5"><h2>My orders</h2>
+    <table border="1" class="table table-striped">
+        <tr>
+            <th>Order id</th>
+            <th>Order Date</th>
+            <th>Connection Type</th>
+            <th>Plan</th>
+            <th>Status</th>
+        </tr>
+        <tr *ngFor="let element of out_order">
+                <td>{{element._id}}</td>
+                <td>{{element.date}}</td>
+                <td>{{element.Connectionrequired}}</td>
+                <td>{{element.chooseplan}}</td>
+                <td>{{element.status}}</td>
+        </tr>
+        </table>
+</div>
+<div *ngIf="k6"><h2>Calculate Bill</h2>
+    <table border="1" class="table table-striped">
+        <tr>
+            <th>Price</th>
+            <th>No. of Connections</th>
+            <th>Price</th>
+        </tr>
+        <tr *ngFor="let ven of rep1">
+                <td>{{ven._id}}</td>
+                <td>{{ven.no_of_connection}}</td>
+                <td>{{ven.amount}}</td>
+        </tr>
+        <tr>
+            <td>Total</td>
+            <td></td>
+            <td>{{sumamount}}</td>
+        </tr>
+    </table>
+</div>
+<div *ngIf="k9"><app-customer></app-customer></div>

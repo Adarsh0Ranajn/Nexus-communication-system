@@ -1,0 +1,37 @@
+<div>
+    <form [formGroup]="stockref" (ngSubmit)="stockdata()">
+        <table>
+            <tr>
+                <td><label><p class="font-weight-bold">S.No.</p></label></td>
+                <td><input type="number" formControlName="_id"></td>
+                <td><label><p class="font-weight-bold">Vendor Name</p></label></td>
+                <td><input type="text" formControlName="vendor_name"></td>
+                <td><label><p class="font-weight-bold">Invoice No.</p></label></td>
+                <td><input type="number" formControlName="invoice_no" ></td>
+                <td><label><p class="font-weight-bold">Date</p></label></td>
+                <td><input type="date" formControlName="date"></td>
+            </tr>
+        </table>
+        <table>
+            <tr>
+                <td><label><p class="font-weight-bold">Product Name</p></label></td>
+                <td><label><p class="font-weight-bold">Quantity</p></label></td>
+                <td><label><p class="font-weight-bold">Price</p></label></td>
+                <td><label><p class="font-weight-bold">Amount</p></label></td>
+            </tr>
+            <tr>
+                <td><input type="string" formControlName="item_name"></td>
+                <td><input type="number" formControlName="quantity"></td>
+                <td><input type="number" formControlName="item_unit_price"></td>
+                <td><input type="number" formControlName="amount"></td>
+            </tr>
+            <tr>
+                <td></td>
+                <td></td>
+                <td><input type="submit" value="Add stock" class="btn btn-success"></td>
+                <td><input type="reset" value="Reset" class="btn btn-danger"></td>
+            </tr>
+        </table>
+    </form>
+    {{msg}}
+</div>

@@ -1,0 +1,114 @@
+<div>
+<div *ngIf="t1">
+    <h2>Welcome to Technical-Login Page</h2>
+    <form [formGroup]="loginRef" (ngSubmit)="checkUser()">
+        <table>
+    
+    <tr> 
+        <td><label><p class="font-weight-bold">Username</p></label></td>
+        <td><input type="text" formControlName="user"></td>
+    </tr>
+    <tr>
+       <td><label><p class="font-weight-bold">Password</p></label></td>
+       <td><input type="password" formControlName="pass"></td> 
+    </tr>
+    <tr>
+        <td><input type="submit" value="submit" class="btn btn-success" style="width:200px;"></td>
+        <td><input type="reset" value="reset" class="btn btn-danger" style="width:200px;"></td>
+    </tr>
+</table>
+</form>
+<p>{{msg}}</p>
+
+</div>
+
+<div *ngIf="t2">
+    <table id="tb1">
+        <tr><td><button class="btn btn-light" (click)="provide_connection()">Provide Connection</button></td>
+        <td><button class="btn btn-light"(click)="update_connection()">Update Connection</button></td>
+        <td><button class="btn btn-light"(click)="check_placed_conection()">Check Placed Connection</button></td>
+        <td><button class="btn btn-light"(click)="product_details()">Product Details</button></td>
+        <td><button class="btn btn-success"(click)="logout()">Log out</button></td></tr>
+       </table>
+    </div>
+    <div *ngIf="t3">
+        <h2>Connection Details</h2>
+        <table border="1" class="table table-striped">
+            <tr>
+                <th>Order id</th>
+                <th>Order Date</th>
+                <th>Connection Type</th>
+                <th>Plan</th>
+                <th>Status</th>
+                <th>Action</th>
+            </tr>
+            <tr *ngFor="let element of out_order">
+                    <td>{{element._id}}</td>
+                    <td>{{element.date}}</td>
+                    <td>{{element.Connectionrequired}}</td>
+                    <td>{{element.chooseplan}}</td>
+                    <td>{{element.status}}</td>
+                    <td><input type="button" value="Accept" (click)="transfer_tech(element)"></td>
+            </tr>
+            </table>
+    </div>
+    <div *ngIf="t4">
+        <h2>Update Details</h2>
+        <table border="1" class="table table-striped">
+            <tr>
+                <th>Order id</th>
+                <th>Order Date</th>
+                <th>Connection Type</th>
+                <th>Plan</th>
+                <th>Status</th>
+                <th>New Status</th>
+                <th>Action</th>
+            </tr>
+            <tr *ngFor="let element of out_order4">
+                    <td>{{element._id}}</td>
+                    <td>{{element.date}}</td>
+                    <td>{{element.Connectionrequired}}</td>
+                    <td>{{element.chooseplan}}</td>
+                    <td>{{element.status}}</td>
+                    <td><select #ref1 >
+                    <option value="Active">Active</option>
+                    <option value="Permanently Inactive">Permanently Inactive</option>
+                    <option value="Temporary Inactive">Temporary Inactive</option>
+                    </select></td>
+                    <td><input type="button" value="Update" (click)="update_status(element._id,ref1.value)"></td>
+            </tr>
+            </table>
+    </div>
+    <div *ngIf="t5">
+        <h2>Product Details</h2>
+        <table border="1" class="table table-striped">
+            <tr>
+                <th>Item Name</th>
+                <th>Stock In</th>
+                <th>Stock Out</th>
+            </tr>
+            <tr *ngFor="let key1 of rep">
+                    <td>{{key1._id}}</td>
+                    <td>{{key1.stock_in}}</td>
+                    <td>{{key1.stock_out}}</td>
+            </tr>
+            </table>
+    </div>
+    <div *ngIf="t6"><h2>Placed Connection Status</h2>
+        <table border="1" class="table table-striped">
+            <tr>
+                <th>Order id</th>
+                <th>Order Date</th>
+                <th>Connection Type</th>
+                <th>Plan</th>
+                <th>Status</th>
+            </tr>
+            <tr *ngFor="let element of out_order4">
+                    <td>{{element._id}}</td>
+                    <td>{{element.date}}</td>
+                    <td>{{element.Connectionrequired}}</td>
+                    <td>{{element.chooseplan}}</td>
+                    <td>{{element.status}}</td>
+            </tr>
+            </table>
+    </div>

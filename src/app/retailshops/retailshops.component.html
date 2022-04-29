@@ -1,0 +1,120 @@
+<div>
+<div *ngIf="t1">
+    <h2>Welcome to Retail Shops-Login Page</h2>
+    <form [formGroup]="loginRef" (ngSubmit)="checkUser()">
+        <table>
+    
+    <tr>
+        <td><label><p class="font-weight-bold">Username</p></label></td>
+        <td><input type="text" formControlName="user"></td>
+    </tr>
+    <tr>
+       <td><label><p class="font-weight-bold">Password</p></label></td>
+       <td><input type="password" formControlName="pass"></td> 
+    </tr>
+    <tr>
+        <td><input type="submit" value="submit" class="btn btn-success" style="width:200px;"></td>
+        <td><input type="reset" value="reset" class="btn btn-danger" style="width:200px;"></td>
+    </tr>
+</table>
+</form>
+<p>{{msg}}</p>
+
+</div>
+<div *ngIf="t2">
+    <table>
+        <tr><td><button class="btn btn-light" (click)="retail_connection()">Retail-Connection Request</button></td>
+        <td><button class="btn btn-light" (click)="retail_check_order()">Retail-Check Order Status</button></td>
+        <td><button class="btn btn-light" (click)="retail_customer_detail()">Retail-Customer Detail</button></td>
+        <td><button class="btn btn-light" (click)="retail_plan()">Retail-Plan Detail</button></td>
+        <td><button class="btn btn-success"(click)="logout()">Log out</button></td>
+    </tr>
+       </table>
+    </div>
+<div *ngIf="t3">
+        <h2>Pending orders</h2>
+        <table border="1" class="table table-striped">
+            <tr>
+                <th>Order id</th>
+                <th>Order Date</th>
+                <th>Connection Type</th>
+                <th>Plan</th>
+                <th>Status</th>
+                <th>Action</th>
+            </tr>
+            <tr *ngFor="let element of out_order">
+                    <td>{{element._id}}</td>
+                    <td>{{element.date}}</td>
+                    <td>{{element.Connectionrequired}}</td>
+                    <td>{{element.chooseplan}}</td>
+                    <td>{{element.status}}</td>
+                    <td><input type="button" value="Send to Technician" (click)="transfer_tech(element)"></td>
+            </tr>
+            </table>
+    </div>
+    <div *ngIf="t4">
+        <h2>Placed Connection Status</h2>
+            <table border="1" class="table table-striped">
+                <tr>
+                    <th>Order id</th>
+                    <th>Order Date</th>
+                    <th>Connection Type</th>
+                    <th>Plan</th>
+                    <th>Status</th>
+                </tr>
+                <tr *ngFor="let element of out_order4">
+                        <td>{{element._id}}</td>
+                        <td>{{element.date}}</td>
+                        <td>{{element.Connectionrequired}}</td>
+                        <td>{{element.chooseplan}}</td>
+                        <td>{{element.status}}</td>
+                </tr>
+                </table>
+    </div>
+    <div *ngIf="t5">
+        <h2>Placed Connection Status</h2>
+        <table border="1" class="table table-striped">
+            <tr>
+                <th>Customer id</th>
+                <th>User Id</th>
+                <th>Name</th>
+                <th>Age</th>
+                <th>Phone number</th>
+                <th>City</th>
+            </tr>
+            <tr *ngFor="let element of out_order5">
+                <td>{{element._id}}</td>
+                <td>{{element._username}}</td>
+                <td>{{element._name}}</td>
+                <td>{{element._age}}</td>
+                <td>{{element._phoneno}}</td>
+                <td>{{element._city}}</td>
+        </tr>
+            </table>
+    </div>
+    <div *ngIf="t6">
+        <h2>Placed Connection Status</h2>
+        <table border="1" class="table table-striped">
+            <tr>
+                <th>Plan Type</th>
+                <th>Discription</th>
+                <th>Amount</th>
+            </tr>
+            <tr>
+                <td>Basic</td>
+                <td>Unlimited speed upto 30mbps</td>
+                <td>Rs. 299</td>
+            </tr>
+            <tr>
+                <td>Regular</td>
+                <td>Unlimited speed upto 100mbps</td>
+                <td>Rs. 399</td>
+            </tr>
+            <tr>
+                <td>Advance</td>
+                <td>Unlimited speed upto 300mbps</td>
+                <td>Rs. 699</td>
+            </tr>
+            </table>
+    </div>
+</div>

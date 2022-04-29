@@ -1,0 +1,32 @@
+table{
+    margin-left:auto;
+    margin-right:auto;
+    margin-top: 40px;
+}
+h2{
+    text-align: center;
+}
+tr{
+    margin:10px;
+    padding: 5%;
+}
+p{
+    font-weight: bold;
+    text-align: center;
+}
+input.form-control.ng-untouched.ng-pristine.ng-valid {
+        width: 200px;
+        text-align: center;
+        margin-left: auto;
+        margin-right: auto;
+        margin-top: 4px;
+}
+#t1 button{
+    width:162px;
+}
+#apply{
+    margin-left: auto;
+    margin-right: 132px;
+    margin-top: 27px;
+    width: 70px;
+}
